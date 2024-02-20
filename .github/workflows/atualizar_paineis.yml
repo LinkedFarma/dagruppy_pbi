@@ -1,0 +1,29 @@
+name: Atualizar Paineis do Power BI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v2
+
+    - name: Instalar o Power BI CLI
+      run: npm install -g powerbi-cli
+
+    - name: Exportar painéis do Power BI
+      run: pbi report export --workspace <workspace_id> --outputPath ./reports
+
+    - name: Adicionar, confirmar e enviar atualizações para o GitHub
+      run: |
+        git config --global user.email "samuel.massucci@gruppytecnologia.onmicrosoft.com
+"
+        git config --global user.name "Samuel Massucci"
+        git add .
+        git commit -m "Atualizando painéis do Power BI"
+        git push
