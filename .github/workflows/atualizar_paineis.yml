@@ -12,14 +12,14 @@ jobs:
     steps:
     - name: Checkout do código
       uses: actions/checkout@v2
-      with:
-        node-version: '20'  # Adicionando a versão do Node.js
 
     - name: Instalar o Power BI CLI
-      run: npm install -g powerbi-cli
+      run: |
+        sudo npm install -g powerbi-cli
 
     - name: Exportar painéis do Power BI
-      run: pbi report export --workspace 172a9150-5bfa-48df-9916-7929247d8725 --outputPath ./reports
+      run: |
+        pbi report export --workspace 172a9150-5bfa-48df-9916-7929247d8725 --outputPath ./reports
 
     - name: Adicionar, confirmar e enviar atualizações para o GitHub
       run: |
