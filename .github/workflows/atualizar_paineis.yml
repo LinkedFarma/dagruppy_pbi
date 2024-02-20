@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout do código
       uses: actions/checkout@v2
+      with:
+        node-version: '20'  # Especificando a versão do Node.js para a ação de checkout
 
     - name: Instalar o Power BI CLI
       run: |
